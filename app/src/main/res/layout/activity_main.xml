@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/scoreTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginRight="150dp"
+        android:layout_marginTop="30dp"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/timerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginRight="150dp"
+        android:layout_below="@+id/scoreTextView"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/commandTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/timerTextView"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/doubleTapText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/commandTextView"
+        android:layout_centerHorizontal="true"
+        android:text="DOUBLE TAP"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <com.varunest.sparkbutton.SparkButton
+        android:id="@+id/doubleTapSparkBtn"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        app:sparkbutton_activeImage="@drawable/image_doubletap"
+        app:sparkbutton_iconSize="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/doubleTapText"
+        app:sparkbutton_primaryColor="@color/white"
+        app:sparkbutton_secondaryColor="@color/red" />
+
+    <TextView
+        android:id="@+id/swipeItText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/doubleTapSparkBtn"
+        android:layout_centerHorizontal="true"
+        android:text="SWIPE IT"
+        android:textColor="@color/white"
+        android:textSize="15sp"/>
+
+    <ImageView
+        android:id="@+id/swipeImageView"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:background="@drawable/swipe_background"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/swipeItText" />
+
+    <ImageView
+        android:id="@+id/swipeRevImageView"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:background="@drawable/swipe_background"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/swipeItText" />
+
+    <TextView
+        android:id="@+id/tapItText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tapItImageBtn"
+        android:layout_centerHorizontal="true"
+        android:text="TAP IT"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/white"
+        android:textSize="15sp"/>
+
+
+    <ImageButton
+        android:id="@+id/tapItImageBtn"
+        android:layout_width="80dp"
+        android:layout_height="77dp"
+        android:layout_marginBottom="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/image_tapit" />
+
+</RelativeLayout>
