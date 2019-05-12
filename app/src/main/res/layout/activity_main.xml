@@ -98,7 +98,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/tapItImageBtn"
         android:layout_centerHorizontal="true"
-        android:text="TAP IT"
+        android:text="SPIN IT"
         android:layout_marginBottom="10dp"
         android:textColor="@color/white"
         android:textSize="15sp"/>

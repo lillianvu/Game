@@ -25,13 +25,14 @@ public class MainActivity extends AppCompatActivity {
     ImageView swipeImageView, swipeRevImageView;
     ImageButton tapItImageBtn;
     SparkButton doubleTapSparkBtn;
-    MediaPlayer mediaPlayer;
+    MediaPlayer mediaPlayer, backgroundMedia;
     AnimationDrawable swipeAnimation, swipeRevAnimation;
     SoundPool soundPool;
     int swipeItBtnSound, swipeItCommand, doubleBtnSound, doubleTapCommand, tapItBtnSound, tapItCommand, wrongBtnSound;
     int scoreCount = 0;
     int swipeCount = 0;
-    String[] commands = {"TAP IT", "SWIPE IT", "DOUBLE TAP"};
+    String[] commands = {"SPIN IT", "SWIPE IT", "DOUBLE TAP"};
+    int maxVolume = 100;
 
     CountDownTimer countDownTime;
     long timeLeftInMilliseconds = 31000;
@@ -45,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public void onFinish() {
-                IntroActivity introActivity = new IntroActivity();
-                introActivity.backgroundMedia.stop();
                 Intent intent = new Intent(getApplicationContext(),EndActivity.class);
                 intent.putExtra("SCORE", scoreCount);
                 startActivity(intent);
@@ -86,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 String commandAudio = commandTextView.getText().toString();
                 switch(commandAudio) {
-                    case "TAP IT":
+                    case "SPIN IT":
                         soundPool.play(tapItCommand, 1, 1, 0, 0, 1);
                         break;
                     case "SWIPE IT":
@@ -107,8 +106,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(),EndActivity.class);
         intent.putExtra("SCORE", scoreCount);
         startActivity(intent);
-        IntroActivity introActivity = new IntroActivity();
-        introActivity.backgroundMedia.stop();
     }
 
     @Override
@@ -124,6 +121,11 @@ public class MainActivity extends AppCompatActivity {
         swipeItCommand = soundPool.load(this, R.raw.swipeitsound, 1);
         doubleTapCommand = soundPool.load(this, R.raw.doubletapsound, 1);
         wrongBtnSound = soundPool.load(this, R.raw.wrongbtnsound, 1);
+
+        backgroundMedia = MediaPlayer.create(this, R.raw.backgroundmusic);
+        backgroundMedia.start();
+        float log1=(float)(Math.log(maxVolume-98)/Math.log(maxVolume));
+        backgroundMedia.setVolume(log1,log1);
 
         commandTextView = findViewById(R.id.commandTextView);
         scoreTextView = findViewById(R.id.scoreTextView);
@@ -166,13 +168,12 @@ public class MainActivity extends AppCompatActivity {
                 soundPool.play(tapItBtnSound, 1, 1, 0, 0, 1);
                 final String chosenCommand = commandTextView.getText().toString();
 
-                if (chosenCommand.equals(commands[1]) | chosenCommand.equals(commands[2])) {
+                if (chosenCommand.equals(commands[0])) {
+                    newNumberGenerator();
+                } else {
                     soundPool.play(wrongBtnSound, 1, 1, 0, 0, 1);
                     startEndActivity();
                     countDownTime.cancel();
-                }
-                if (chosenCommand.equals(commands[0])) {
-                    newNumberGenerator();
                 }
             }
         });
@@ -183,15 +184,14 @@ public class MainActivity extends AppCompatActivity {
                 soundPool.play(swipeItBtnSound, 1, 1, 0, 0, 1);
                 final String chosenCommand = commandTextView.getText().toString();
 
-                if (chosenCommand.equals(commands[0]) | chosenCommand.equals(commands[2])) {
-                    soundPool.play(wrongBtnSound, 1, 1, 0, 0, 1);
-                    startEndActivity();
-                    countDownTime.cancel();
-                }
                 if (chosenCommand.equals(commands[1])) {
                     swipeAnimation.stop();
                     swipeAnimation.selectDrawable(0);
                     newNumberGenerator();
+                } else {
+                    soundPool.play(wrongBtnSound, 1, 1, 0, 0, 1);
+                    startEndActivity();
+                    countDownTime.cancel();
                 }
             }
         });
@@ -203,15 +203,14 @@ public class MainActivity extends AppCompatActivity {
                 soundPool.play(swipeItBtnSound, 1, 1, 0, 0, 1);
                 final String chosenCommand = commandTextView.getText().toString();
 
-                if (chosenCommand.equals(commands[0]) | chosenCommand.equals(commands[2])) {
-                    soundPool.play(wrongBtnSound, 1, 1, 0, 0, 1);
-                    startEndActivity();
-                    countDownTime.cancel();
-                }
                 if (chosenCommand.equals(commands[1])) {
                     swipeRevAnimation.stop();
                     swipeRevAnimation.selectDrawable(0);
                     newNumberGenerator();
+                } else {
+                    soundPool.play(wrongBtnSound, 1, 1, 0, 0, 1);
+                    startEndActivity();
+                    countDownTime.cancel();
                 }
             }
         });
@@ -222,13 +221,12 @@ public class MainActivity extends AppCompatActivity {
                 soundPool.play(doubleBtnSound, 1, 1, 0, 0, 1);
                 final String chosenCommand = commandTextView.getText().toString();
 
-                if (chosenCommand.equals(commands[1]) | chosenCommand.equals(commands[0])) {
+                if (chosenCommand.equals(commands[2])) {
+                    newNumberGenerator();
+                } else {
                     soundPool.play(wrongBtnSound, 1, 1, 0, 0, 1);
                     startEndActivity();
                     countDownTime.cancel();
-                }
-                if (chosenCommand.equals(commands[2])) {
-                    newNumberGenerator();
                 }
 
                 if (buttonState) {

@@ -11,9 +11,8 @@ import android.widget.ImageView;
 public class IntroActivity extends AppCompatActivity {
 
     AnimationDrawable countDownAnimation;
-    MediaPlayer mediaPlayer, backgroundMedia;
+    MediaPlayer mediaPlayer;
     ImageView countDownImageView;
-    int maxVolume = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +24,6 @@ public class IntroActivity extends AppCompatActivity {
         countDownAnimation = (AnimationDrawable) countDownImageView.getBackground();
         countDownAnimation.setOneShot(true);
         countDownAnimation.start();
-
-        backgroundMedia = MediaPlayer.create(this, R.raw.backgroundmusic);
-        backgroundMedia.start();
-        float log1=(float)(Math.log(maxVolume-98)/Math.log(maxVolume));
-        backgroundMedia.setVolume(log1,log1);
 
         mediaPlayer = MediaPlayer.create(this, R.raw.countdownsound);
         mediaPlayer.setLooping(false);
