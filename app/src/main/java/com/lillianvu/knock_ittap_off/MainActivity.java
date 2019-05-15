@@ -23,12 +23,12 @@ public class MainActivity extends AppCompatActivity {
 
     TextView commandTextView, scoreTextView, timerTextView;
     ImageView swipeImageView, swipeRevImageView;
-    ImageButton tapItImageBtn;
+    ImageButton spinItImageBtn;
     SparkButton doubleTapSparkBtn;
     MediaPlayer mediaPlayer, backgroundMedia;
     AnimationDrawable swipeAnimation, swipeRevAnimation;
     SoundPool soundPool;
-    int swipeItBtnSound, swipeItCommand, doubleBtnSound, doubleTapCommand, tapItBtnSound, tapItCommand, wrongBtnSound;
+    int swipeItBtnSound, swipeItCommand, doubleBtnSound, doubleTapCommand, spinItBtnSound, spinItCommand, wrongBtnSound;
     int scoreCount = 0;
     int swipeCount = 0;
     String[] commands = {"SPIN IT", "SWIPE IT", "DOUBLE TAP"};
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 String commandAudio = commandTextView.getText().toString();
                 switch(commandAudio) {
                     case "SPIN IT":
-                        soundPool.play(tapItCommand, 1, 1, 0, 0, 1);
+                        soundPool.play(spinItCommand, 1, 1, 0, 0, 1);
                         break;
                     case "SWIPE IT":
                         soundPool.play(swipeItCommand, 1, 1, 0, 0, 1);
@@ -114,10 +114,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         soundPool = new SoundPool(7, AudioManager.STREAM_MUSIC,0);
-        tapItBtnSound = soundPool.load(this, R.raw.tapsound,1);
+        spinItBtnSound = soundPool.load(this, R.raw.spinsound,1);
         doubleBtnSound = soundPool.load(this, R.raw.doublesound,1);
         swipeItBtnSound = soundPool.load(this, R.raw.swipesound,1);
-        tapItCommand = soundPool.load(this, R.raw.tapitsound, 1);
+        spinItCommand = soundPool.load(this, R.raw.spinitsound, 1);
         swipeItCommand = soundPool.load(this, R.raw.swipeitsound, 1);
         doubleTapCommand = soundPool.load(this, R.raw.doubletapsound, 1);
         wrongBtnSound = soundPool.load(this, R.raw.wrongbtnsound, 1);
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
         timerTextView = findViewById(R.id.timerTextView);
         swipeImageView = findViewById(R.id.swipeImageView);
         swipeRevImageView = findViewById(R.id.swipeRevImageView);
-        tapItImageBtn = findViewById(R.id.tapItImageBtn);
+        spinItImageBtn = findViewById(R.id.spinItImageBtn);
         doubleTapSparkBtn = findViewById(R.id.doubleTapSparkBtn);
 
         swipeImageView = findViewById(R.id.swipeImageView);
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
         swipeRevAnimation = (AnimationDrawable) swipeRevImageView.getBackground();
 
         doubleTapSparkBtn.setSoundEffectsEnabled(false);
-        tapItImageBtn.setSoundEffectsEnabled(false);
+        spinItImageBtn.setSoundEffectsEnabled(false);
         swipeImageView.setSoundEffectsEnabled(false);
         swipeRevImageView.setSoundEffectsEnabled(false);
 
@@ -161,11 +161,11 @@ public class MainActivity extends AppCompatActivity {
         scoreTextView.setText("Score: " + scoreCount);
         startTimer();
 
-        tapItImageBtn.setOnClickListener(new View.OnClickListener() {
+        spinItImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tapItImageBtn.animate().rotation(tapItImageBtn.getRotation()+360).start();
-                soundPool.play(tapItBtnSound, 1, 1, 0, 0, 1);
+                spinItImageBtn.animate().rotation(spinItImageBtn.getRotation()+360).start();
+                soundPool.play(spinItBtnSound, 1, 1, 0, 0, 1);
                 final String chosenCommand = commandTextView.getText().toString();
 
                 if (chosenCommand.equals(commands[0])) {

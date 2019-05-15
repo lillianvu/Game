@@ -52,7 +52,7 @@
         android:layout_centerHorizontal="true"
         android:text="DOUBLE TAP"
         android:layout_marginTop="20dp"
-        android:textColor="@color/white"
+        android:textColor="@color/red"
         android:textSize="15sp" />
 
     <com.varunest.sparkbutton.SparkButton
@@ -73,7 +73,7 @@
         android:layout_below="@id/doubleTapSparkBtn"
         android:layout_centerHorizontal="true"
         android:text="SWIPE IT"
-        android:textColor="@color/white"
+        android:textColor="@color/red"
         android:textSize="15sp"/>
 
     <ImageView
@@ -93,24 +93,24 @@
         android:layout_below="@+id/swipeItText" />
 
     <TextView
-        android:id="@+id/tapItText"
+        android:id="@+id/spinItText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/tapItImageBtn"
+        android:layout_above="@id/spinItImageBtn"
         android:layout_centerHorizontal="true"
         android:text="SPIN IT"
         android:layout_marginBottom="10dp"
-        android:textColor="@color/white"
+        android:textColor="@color/red"
         android:textSize="15sp"/>
 
 
     <ImageButton
-        android:id="@+id/tapItImageBtn"
+        android:id="@+id/spinItImageBtn"
         android:layout_width="80dp"
         android:layout_height="77dp"
         android:layout_marginBottom="30dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/image_tapit" />
+        android:background="@drawable/image_spinit" />
 
 </RelativeLayout>
